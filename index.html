@@ -1,7 +1,41 @@
-<html>
-<head><title></title></head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #holla{
+        width: 500px;
+        height: 300px;
+        font-size: 39px;
+    }
+</style>
 <body>
-  <h1> hello everyone</h1>
-  <h3> whats up bro</h3>
-  </body>
+<div id="holla"></div>
+<button onclick="allo()">click holla</button>
+</body>
+<script>
+    var at=setInterval(allo, 4000);
+    function allo(){
+    var myArray = ["hello", "hello aman gadha", "kya faltu ka kam karte rahta  hai monkey","hello amana"];
+
+var randomItem = myArray[Math.floor(Math.random()*myArray.length)];
+var hel=document.getElementById("holla");
+hel.innerHTML = randomItem;
+var hello=new SpeechSynthesisUtterance(randomItem);
+speechSynthesis.speak(hello);
+if (randomItem=="hello"){
+    document.getElementById("holla").style.background="blue";
+}
+else{
+    var get = ["yellow", "black", "red","green" ];
+    var het= get[Math.floor(Math.random()*get.length)];
+    document.getElementById("holla").style.background= het;
+
+}
+    }
+</script>
 </html>
