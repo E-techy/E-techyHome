@@ -7,35 +7,64 @@
     <title>Document</title>
 </head>
 <style>
+    /* Styles for the div with id 'holla' */
     #holla{
-        width: 500px;
-        height: 300px;
-        font-size: 39px;
+        width: 500px; /* Sets the width of the div */
+        height: 300px; /* Sets the height of the div */
+        font-size: 39px; /* Sets the font size of the text inside the div */
     }
 </style>
 <body>
+<!-- Div element where random messages will be displayed -->
 <div id="holla"></div>
+<!-- Button to manually trigger the allo function -->
 <button onclick="allo()">click holla</button>
 </body>
 <script>
-    var at=setInterval(allo, 4000);
+    // Sets up an interval to call the 'allo' function every 4000 milliseconds (4 seconds).
+    var at = setInterval(allo, 4000);
+
+    /**
+     * The allo function performs the following actions:
+     * 1. Selects a random message from a predefined array.
+     * 2. Displays the selected message in the 'holla' div.
+     * 3. Uses the Web Speech API to speak the selected message.
+     * 4. Changes the background color of the 'holla' div based on the selected message.
+     */
     function allo(){
-    var myArray = ["hello", "hello aman ", "whats going i your life","is this night or day"];
+        // Array containing various messages to be displayed and spoken.
+        var myArray = ["hello", "hello aman ", "whats going i your life","is this night or day"];
 
-var randomItem = myArray[Math.floor(Math.random()*myArray.length)];
-var hel=document.getElementById("holla");
-hel.innerHTML = randomItem;
-var hello=new SpeechSynthesisUtterance(randomItem);
-speechSynthesis.speak(hello);
-if (randomItem=="hello"){
-    document.getElementById("holla").style.background="blue";
-}
-else{
-    var get = ["yellow", "black", "red","green" ];
-    var het= get[Math.floor(Math.random()*get.length)];
-    document.getElementById("holla").style.background= het;
+        // Selects a random item from myArray.
+        // Math.random() generates a float between 0 (inclusive) and 1 (exclusive).
+        // Multiplying by myArray.length scales this to the array's index range.
+        // Math.floor() rounds down to the nearest whole number to get a valid index.
+        var randomItem = myArray[Math.floor(Math.random()*myArray.length)];
 
-}
+        // Gets a reference to the HTML element with the id 'holla'.
+        var hel = document.getElementById("holla");
+        // Updates the inner HTML of the 'holla' div with the randomly selected message.
+        hel.innerHTML = randomItem;
+
+        // Creates a new SpeechSynthesisUtterance object with the random message.
+        // This object represents a speech request.
+        var hello = new SpeechSynthesisUtterance(randomItem);
+        // Uses the browser's speech synthesis engine to speak the utterance.
+        speechSynthesis.speak(hello);
+
+        // Checks if the randomly selected message is exactly "hello".
+        if (randomItem == "hello"){
+            // If the message is "hello", sets the background color of the 'holla' div to blue.
+            document.getElementById("holla").style.background = "blue";
+        }
+        else{
+            // If the message is not "hello", selects a random background color from another array.
+            var get = ["yellow", "black", "red","green" ];
+            // Selects a random color from the 'get' array using the same random selection logic.
+            var het = get[Math.floor(Math.random()*get.length)];
+            // Sets the background color of the 'holla' div to the randomly selected color.
+            document.getElementById("holla").style.background = het;
+        }
     }
 </script>
 </html>
