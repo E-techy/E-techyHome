@@ -1,1 +1,4 @@
+# Sets the theme for the Jekyll site.
+# This specifies that the 'jekyll-theme-minimal' gem should be used
+# to style and layout the website.
 theme: jekyll-theme-minimal
